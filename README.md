@@ -17,7 +17,7 @@
 
 * 要參考 Tika，在 pom.xml 裡面增加
   
-    ```java
+    ```code
     <dependency>
       <groupId>org.apache.tika</groupId>
       <artifactId>tika-app</artifactId>
@@ -25,3 +25,9 @@
     </dependency>
     ```
 * Maven 會將相關的 jar 與文件放到 `<user home dir>\.m2\repository` 裡面
+
+## Language code
+語言碼的清單在[這裡](https://en.wiktionary.org/wiki/Index:All_languages)
+
+## Tika 的語言辨識功能
+在 MyFirstTika.java 中，Tika 將 L:/Yh-Sort-Out/AllSortOfDocuments/regulardoc/02-考試分發的可行分發模式.doc 判為英文，應該研究如何讓 LanguageDetector 的 mixedLanguages 發揮功效。
