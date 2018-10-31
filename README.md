@@ -27,7 +27,33 @@
 * Maven 會將相關的 jar 與文件放到 `<user home dir>\.m2\repository` 裡面
 
 ## Language code
+
 語言碼的清單在[這裡](https://en.wiktionary.org/wiki/Index:All_languages)
 
 ## Tika 的語言辨識功能
+
 在 MyFirstTika.java 中，Tika 將 L:/Yh-Sort-Out/AllSortOfDocuments/regulardoc/02-考試分發的可行分發模式.doc 判為英文，應該研究如何讓 LanguageDetector 的 mixedLanguages 發揮功效。
+
+## 在 VsCode 中製作可執行的 Jar
+
+[building-a-runnable-jar-with-maven-2](https://stackoverflow.com/questions/2022032/building-a-runnable-jar-with-maven-2) 提到下面的方法來製作可執行的 Jar
+
+* to build: mvn clean dependency:copy-dependencies package
+* to execute (in target dir): java -cp myjar.jar:./dependency/* com.something.MyClass
+
+套到自己的狀況(在Windows 中用;而非:)
+
+* mvn clean dependency:copy-dependencies package
+* java -cp TikaExercise-1.0-SNAPSHOT.jar;./dependency/* tw.org.dzudge.tikaexercise.LanguageDetection
+
+這種方法在 target\dependency產生非常多的jar
+
+或許可採用下面的方法，用mvn install 產生自己的jar，將它與tika-app-1.19.1.jar放在同一個工作目錄，用java 執行時指名main()所在的class。
+
+* mvn install 在 target 目錄產生TikaExercise-1.0-SNAPSHOT.jar
+* 將 tika-app-1.19.1.jar 抄到 target，切換將 target 當工作目錄
+* java -cp TikaExercise-1.0-SNAPSHOT.jar;tika-app-1.19.1.jar tw.org.dzudge.tikaexercise.LanguageDetection
+
+## 在 Eclipse 中製作可執行的 Jar
+
+[這裡](https://stackoverflow.com/questions/11033603/how-to-create-a-jar-with-external-libraries-included-in-eclipse)提到：將專案 export 就有選項可製作成可執行的Jar。
