@@ -9,9 +9,11 @@
 ## 用 Vscode 成立 Maven 新專案
 
 * ctrl+shift+p 選取 Generate from Maven Archetype > maven-archetype-quickstart
-* groupId: name space, artifactId: package name, package name: full package name
+* groupId: full package name, artifactId: directory name
 * destination directory: parent directory
 * pom.xml 裡面的<maven.compiler.source>與<maven.compiler.target>由 1.7 改成 1.8
+
+[這份文件](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)一定要讀，可以了解groupId, artifactId,...等的意義。也可以知道如何使用簡單有用的mvn指令得到專案的產出，以及產出如何讓java使用。
 
 ## 專案需要參考Tika
 
@@ -50,7 +52,7 @@
 
 或許可採用下面的方法，用mvn install 產生自己的jar，將它與tika-app-1.19.1.jar放在同一個工作目錄，用java 執行時指名main()所在的class。
 
-* mvn install 在 target 目錄產生TikaExercise-1.0-SNAPSHOT.jar
+* mvn package 在 target 目錄產生TikaExercise-1.0-SNAPSHOT.jar
 * 將 tika-app-1.19.1.jar 抄到 target，切換將 target 當工作目錄
 * java -cp TikaExercise-1.0-SNAPSHOT.jar;tika-app-1.19.1.jar tw.org.dzudge.tikaexercise.LanguageDetection
 
